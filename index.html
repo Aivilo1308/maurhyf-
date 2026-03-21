@@ -497,6 +497,11 @@
     font-size: clamp(2.5rem, 4vw, 4rem); font-weight: 300; color: var(--creme);
   }
   .galerie-header h1 em { color: var(--or); font-style: italic; }
+  .galerie-hint {
+    font-family: 'Cormorant Garamond', serif; font-size: 0.9rem;
+    font-style: italic; color: rgba(232,213,181,0.45);
+    margin-top: 12px; letter-spacing: 0.03em;
+  }
   .galerie-grid {
     display: grid; grid-template-columns: repeat(4, 1fr);
     gap: 20px; padding: 0 0 80px; background: var(--noir);
@@ -535,6 +540,25 @@
   .galerie-card:hover .galerie-card-frame {
     border-color: var(--or);
     box-shadow: 0 16px 60px rgba(201,168,76,0.15), 0 8px 30px rgba(0,0,0,0.6);
+  }
+  /* — Overlay "Voir les détails" au survol — */
+  .galerie-card-overlay {
+    position: absolute; inset: 0; z-index: 4;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+    background: rgba(8,6,4,0.55);
+    opacity: 0; transition: opacity 0.4s;
+    pointer-events: none;
+  }
+  .galerie-card:hover .galerie-card-overlay { opacity: 1; }
+  .galerie-card-overlay-icon {
+    width: 44px; height: 44px; border: 1.5px solid var(--or); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; color: var(--or);
+  }
+  .galerie-card-overlay-text {
+    font-family: 'Cormorant Garamond', serif; font-size: 0.8rem;
+    font-style: italic; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--creme);
   }
   .galerie-card-frame img {
     width: 100%; height: 100%; object-fit: cover;
@@ -982,6 +1006,7 @@
   <div class="galerie-header">
     <p class="section-label">La collection</p>
     <h1>Les <em>Œuvres</em></h1>
+    <p class="galerie-hint" id="galerieHint">Cliquez sur une œuvre pour découvrir ses détails et signaler votre intérêt</p>
   </div>
   <!-- Filtres -->
   <div class="galerie-filters">
@@ -1013,9 +1038,9 @@
 <div class="contact-strip reveal" id="contact">
   <h2 class="contact-strip-title">Une œuvre vous touche ? Entrons en contact.</h2>
   <div class="contact-strip-action">
-    <a href="mailto:artofmaurhyf@gmail.com" class="btn-white">Écrire à l'artiste →</a>
+    <a href="/cdn-cgi/l/email-protection#0667747269606b6773746e7f6046616b676f6a2865696b" class="btn-white">Écrire à l'artiste →</a>
     <a href="https://wa.me/2250102385522" class="btn-whatsapp" target="_blank" rel="noopener">WhatsApp →</a>
-    <span class="contact-email">artofmaurhyf@gmail.com · +225 01 02 38 55 22</span>
+    <span class="contact-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1d7c6f69727b707c686f75647b5d7a707c7471337e7270">[email&#160;protected]</a> · +225 01 02 38 55 22</span>
   </div>
 </div>
 
@@ -1059,7 +1084,7 @@
   </div>
 </div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // ===== OEUVRES DATA =====
   const oeuvres = [
     { oid: 'MF-2023-001', img: 'Peinture1.jpeg', title: 'Peinture 1', technique: 'Relief mixte 2D & 3D', dimensions: '80 × 60 cm', year: '2023', support: 'Toile sur châssis bois', disponibilite: 'Disponible', collection: "Femmes d'Afrique", desc: 'Un groupe de femmes aux visages expressifs, parées de bijoux et de couleurs vives, célébrant la beauté de la diversité africaine.' },
@@ -1161,7 +1186,8 @@
       card.style.opacity = '0';
       card.style.transform = 'translateY(20px)';
       card.onclick = (function(idx) { return function() { openModal(idx); }; })(ri);
-      card.innerHTML = '<div class="galerie-card-inner"><div class="galerie-card-frame"><img src="' + o.img + '" alt="' + o.title + '" loading="lazy"></div></div><div class="galerie-card-label">' + o.title + '</div>';
+      var hintText = (typeof currentLang !== 'undefined' && currentLang === 'en') ? 'View details' : 'Voir les d\u00e9tails';
+      card.innerHTML = '<div class="galerie-card-inner"><div class="galerie-card-frame"><img src="' + o.img + '" alt="' + o.title + '" loading="lazy"><div class="galerie-card-overlay"><div class="galerie-card-overlay-icon">\u2689</div><div class="galerie-card-overlay-text">' + hintText + '</div></div></div></div><div class="galerie-card-label">' + o.title + '</div>';
       grid.appendChild(card);
       (function(c, delay) {
         setTimeout(function() { c.style.transition = 'opacity 0.5s ease, transform 0.5s ease'; c.style.opacity = '1'; c.style.transform = 'translateY(0)'; }, delay);
@@ -1554,6 +1580,10 @@
     var rb=document.querySelector('.filter-reset');if(rb)rb.textContent=isEN?'Reset':'R\u00e9initialiser';
     var wa=document.querySelector('.btn-whatsapp');if(wa)wa.textContent=isEN?'WhatsApp \u2192':'WhatsApp \u2192';
 
+    // Gallery hint
+    var hint=document.getElementById('galerieHint');
+    if(hint) hint.textContent=isEN?'Click on a work to discover its details and express your interest':'Cliquez sur une \u0153uvre pour d\u00e9couvrir ses d\u00e9tails et signaler votre int\u00e9r\u00eat';
+
     buildGallery(currentPage);
   }
 
@@ -1565,7 +1595,6 @@
       document.getElementById('modalDesc').textContent = descEN[o.oid] || o.desc;
     }
   };
-
 </script>
 </body>
 </html>
