@@ -8,15 +8,15 @@
 <meta name="keywords" content="Maurhy F, Fondio Maurhy, artiste peintre, art africain contemporain, relief mixte, peinture 2D 3D, art Côte d'Ivoire, Abidjan, galerie art africain, œuvres originales, sculpture peinture, art contemporain Afrique, mixed relief art, African contemporary artist">
 <meta name="author" content="Fondio Maurhy">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://maurhyf.com/">
+<link rel="canonical" href="https://artofmaurhy.art/">
 <meta name="theme-color" content="#0F0D0A">
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://maurhyf.com/">
+<meta property="og:url" content="https://artofmaurhy.art/">
 <meta property="og:title" content="Maurhy F. — Artiste Peintre | Art Africain Contemporain">
 <meta property="og:description" content="Relief mixte 2D & 3D — À mi-chemin entre peinture et sculpture, les œuvres de Fondio Maurhy célèbrent la diversité des cultures. Galerie en ligne, expositions, œuvres disponibles.">
-<meta property="og:image" content="https://maurhyf.com/Portrait_MF.jpeg">
+<meta property="og:image" content="https://artofmaurhy.art/Portrait_MF.jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="fr_FR">
@@ -37,8 +37,8 @@
   "name": "Fondio Maurhy",
   "alternateName": "Maurhy F.",
   "description": "Artiste peintre ivoirien spécialisé en relief mixte 2D & 3D, art africain contemporain. Ses œuvres fusionnent peinture et sculpture à travers des collages de matériaux divers.",
-  "image": "https://maurhyf.com/Portrait_MF.jpeg",
-  "url": "https://maurhyf.com",
+  "image": "https://artofmaurhy.art/Portrait_MF.jpeg",
+  "url": "https://artofmaurhy.art",
   "email": "artofmaurhyf@gmail.com",
   "telephone": "+2250102385522",
   "birthPlace": {
@@ -63,7 +63,7 @@
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "Maurhy F. — Artiste Peintre",
-  "url": "https://maurhyf.com",
+  "url": "https://artofmaurhy.art",
   "description": "Site officiel de l'artiste peintre Fondio Maurhy. Galerie d'art africain contemporain en relief mixte 2D & 3D.",
   "inLanguage": ["fr", "en"],
   "creator": {
@@ -77,7 +77,7 @@
   "@context": "https://schema.org",
   "@type": "ArtGallery",
   "name": "Galerie Maurhy F.",
-  "url": "https://maurhyf.com/#galerie",
+  "url": "https://artofmaurhy.art/#galerie",
   "description": "Collection d'œuvres originales en relief mixte 2D & 3D par Fondio Maurhy",
   "numberOfItems": 32,
   "artist": {
@@ -302,11 +302,11 @@
 
   /* ===== ABOUT ===== */
   .about-section {
-    background: #160F08; display: grid; grid-template-columns: 2fr 1fr; min-height: 60vh;
+    background: #160F08; display: grid; grid-template-columns: 1fr 1fr; min-height: 60vh;
   }
-  .about-image { position: relative; overflow: hidden; }
-  .about-image img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; filter: sepia(10%) saturate(0.95); }
-  .about-image-overlay { position: absolute; inset: 0; background: linear-gradient(to right, transparent 70%, #160F08 100%); }
+  .about-image { position: relative; overflow: hidden; background: #160F08; }
+  .about-image img { width: 100%; height: 100%; object-fit: contain; object-position: center center; filter: sepia(10%) saturate(0.95); }
+  .about-image-overlay { position: absolute; inset: 0; background: linear-gradient(to right, transparent 85%, #160F08 100%); }
   .about-content { padding: 80px; display: flex; flex-direction: column; justify-content: center; }
   .section-label { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--or); margin-bottom: 16px; }
   .section-title {
@@ -319,6 +319,36 @@
   .about-signature { margin-top: 40px; display: flex; align-items: center; gap: 20px; }
   .signature-line { width: 50px; height: 1px; background: var(--or); }
   .signature-name { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-style: italic; color: var(--or); }
+
+  /* ===== PRESS KIT ===== */
+  .press-kit {
+    margin-top: 48px; padding-top: 36px;
+    border-top: 1px solid rgba(201,168,76,0.15);
+  }
+  .press-kit-label {
+    font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--or); margin-bottom: 16px; font-weight: 400;
+  }
+  .press-kit-links { display: flex; gap: 16px; flex-wrap: wrap; }
+  .press-kit-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 12px 24px;
+    border: 1px solid rgba(201,168,76,0.25);
+    background: transparent;
+    color: var(--sable);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem; font-weight: 400; font-style: italic;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .press-kit-btn:hover {
+    border-color: var(--or); color: var(--or);
+    background: rgba(201,168,76,0.06);
+  }
+  .press-kit-btn-icon {
+    font-size: 1rem; font-style: normal;
+  }
 
   /* ===== BIOGRAPHIE ===== */
   .bio-section {
@@ -886,7 +916,7 @@
       <div class="hero-firstname">Maurhy</div>
       <div class="hero-circle"></div>
     </div>
-    <div class="hero-initial">F. YHRUAM</div>
+    <div class="hero-initial"></div>
     <p class="hero-discipline">Art africain contemporain</p>
     <p class="hero-tagline">À mi-chemin entre peinture et sculpture, ses œuvres célèbrent la diversité des cultures.</p>
     <div class="hero-cta">
@@ -936,6 +966,18 @@
     <div class="about-signature">
       <div class="signature-line"></div>
       <span class="signature-name">Maurhy F.</span>
+    </div>
+    <!-- Press Kit -->
+    <div class="press-kit">
+      <p class="press-kit-label" id="pressLabel">Presse & Médias</p>
+      <div class="press-kit-links">
+        <a href="Port-Folio FONDIO Maurhy.pdf" download class="press-kit-btn" id="pressBtnFr">
+          <span class="press-kit-btn-icon">📄</span> Dossier de presse (FR)
+        </a>
+        <a href="Port-Folio FONDIO Maurhy.pdf" download class="press-kit-btn" id="pressBtnEn">
+          <span class="press-kit-btn-icon">📄</span> Press kit (EN)
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -1674,6 +1716,14 @@
     // Gallery hint
     var hint=document.getElementById('galerieHint');
     if(hint) hint.textContent=isEN?'Click on a work to discover its details and express your interest':'Cliquez sur une \u0153uvre pour d\u00e9couvrir ses d\u00e9tails et signaler votre int\u00e9r\u00eat';
+
+    // Press kit
+    var pl=document.getElementById('pressLabel');
+    if(pl) pl.textContent=isEN?'Press & Media':'Presse & M\u00e9dias';
+    var pf=document.getElementById('pressBtnFr');
+    if(pf) pf.innerHTML='<span class="press-kit-btn-icon">\ud83d\udcc4</span> '+(isEN?'Press kit (FR)':'Dossier de presse (FR)');
+    var pe=document.getElementById('pressBtnEn');
+    if(pe) pe.innerHTML='<span class="press-kit-btn-icon">\ud83d\udcc4</span> '+(isEN?'Press kit (EN)':'Dossier de presse (EN)');
 
     buildGallery(currentPage);
   }
