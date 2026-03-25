@@ -509,6 +509,33 @@
   .expo-tag.upcoming { border-color: var(--terracotta); color: var(--terracotta); }
   .expo-tag.past { border-color: rgba(255,255,255,0.15); color: var(--sable); }
 
+  /* ===== EXPO DECADES ===== */
+  .expo-decade { margin-bottom: 8px; }
+  .expo-decade-btn {
+    display: flex; align-items: center; gap: 16px; width: 100%;
+    background: transparent; border: none; border-bottom: 1px solid rgba(201,168,76,0.1);
+    padding: 16px 0; cursor: pointer; transition: all 0.3s;
+  }
+  .expo-decade-btn:hover { border-bottom-color: var(--or); }
+  .expo-decade-label {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.6rem;
+    font-weight: 300; color: rgba(201,168,76,0.5); transition: color 0.3s;
+  }
+  .expo-decade-btn:hover .expo-decade-label,
+  .expo-decade.open .expo-decade-label { color: var(--or); }
+  .expo-decade-count {
+    font-size: 0.65rem; letter-spacing: 0.15em; color: var(--sable); opacity: 0.5;
+  }
+  .expo-decade-arrow {
+    margin-left: auto; font-size: 0.8rem; color: var(--or); opacity: 0.4;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .expo-decade.open .expo-decade-arrow { transform: rotate(90deg); opacity: 1; }
+  .expo-decade-list {
+    max-height: 0; overflow: hidden; transition: max-height 0.5s ease;
+  }
+  .expo-decade.open .expo-decade-list { max-height: 2000px; }
+
   /* ===== EXPO GALERIE PHOTOS ===== */
   .expo-gallery {
     margin-top: 70px; position: relative;
@@ -946,7 +973,7 @@
   <div class="intro-divider"></div>
   <div class="intro-stats">
     <div><div class="stat-number">+3500</div><div class="stat-label">Œuvres</div></div>
-    <div><div class="stat-number">+30</div><div class="stat-label">Expositions</div></div>
+    <div><div class="stat-number">+42</div><div class="stat-label">Expositions</div></div>
     <div><div class="stat-number">USA | Canada | France | Côte d'Ivoire</div><div class="stat-label">Pays</div></div>
   </div>
 </div>
@@ -971,11 +998,11 @@
     <div class="press-kit">
       <p class="press-kit-label" id="pressLabel">Presse & Médias</p>
       <div class="press-kit-links">
-        <a href="Port-Folio FONDIO Maurhy.pdf" download class="press-kit-btn" id="pressBtnFr">
-          <span class="press-kit-btn-icon">📄</span> Télécharger le Dossier de presse (FR)
+        <a href="Dossier_de_Presse_Maurhy_F.pdf" download class="press-kit-btn" id="pressBtnFr">
+          <span class="press-kit-btn-icon">📄</span> Dossier de presse (FR)
         </a>
-        <a href="Port-Folio FONDIO Maurhy.pdf" download class="press-kit-btn" id="pressBtnEn">
-          <span class="press-kit-btn-icon">📄</span> Download the Press kit (EN)
+        <a href="Press_Kit_Maurhy_F.pdf" download class="press-kit-btn" id="pressBtnEn">
+          <span class="press-kit-btn-icon">📄</span> Press kit (EN)
         </a>
       </div>
     </div>
@@ -1041,14 +1068,14 @@
         <p>Le processus de création en relief mixte, où couches de matière, carton ondulé et enduits se superposent avant de recevoir couleurs et pigments.</p>
       </div>
     </div>
-    <div class="atelier-card tall reveal">
+    <div class="atelier-card wide reveal">
       <img class="atelier-card-img" src="Vernissage_Etats_Unis.jpeg" alt="Démonstration live">
       <div class="atelier-card-caption">
         <h3>Démonstration live</h3>
         <p>Maurhy F. partageant sa technique unique de relief mixte devant un public captivé, lors d'un vernissage aux Etats-Unis. L'art comme pont entre les cultures.</p>
       </div>
     </div>
-    <div class="atelier-card tall reveal">
+    <div class="atelier-card wide reveal">
       <img class="atelier-card-img" src="atelier1.jpeg" alt="Le geste du créateur">
       <div class="atelier-card-caption">
         <h3>Le geste du créateur</h3>
@@ -1068,30 +1095,97 @@
     <a class="section-link">Tout l'agenda →</a>
   </div>
   <div class="reveal">
+    <!-- À venir -->
     <div class="expo-item">
       <div class="expo-year">2025</div>
       <div class="expo-info"><h3>Femmes de pigments</h3><p>Galerie Espace Art — Paris, France</p></div>
       <span class="expo-tag upcoming">À venir</span>
     </div>
-    <div class="expo-item">
-      <div class="expo-year">2024</div>
-      <div class="expo-info"><h3>42ème Salon des arts visuels</h3><p>Buxières-les-Mines, France — Invité d'honneur</p></div>
-      <span class="expo-tag past">Passée</span>
+
+    <!-- 2020s -->
+    <div class="expo-decade open" id="decade2020">
+      <button class="expo-decade-btn" onclick="toggleDecade('decade2020')">
+        <span class="expo-decade-label">2020 — 2024</span>
+        <span class="expo-decade-count">7 expositions</span>
+        <span class="expo-decade-arrow">▸</span>
+      </button>
+      <div class="expo-decade-list">
+        <div class="expo-item"><div class="expo-year">2024</div><div class="expo-info"><h3>42ème Salon des arts visuels</h3><p>Buxières-les-Mines, France — Invité d'honneur</p></div><span class="expo-tag past">Passée</span></div>
+        <div class="expo-item"><div class="expo-year">2024</div><div class="expo-info"><h3>Diorama — Mémoires textiles</h3><p>Centre Culturel Africain — Abidjan, Côte d'Ivoire</p></div><span class="expo-tag past">Passée</span></div>
+        <div class="expo-item"><div class="expo-year">2023</div><div class="expo-info"><h3>Regards croisés contemporains</h3><p>Fondation Blachère — Apt, France</p></div><span class="expo-tag past">Passée</span></div>
+        <div class="expo-item"><div class="expo-year">2021</div><div class="expo-info"><h3>Exposition à l'hôtel Azalaï</h3><p>Marcory — Abidjan, Côte d'Ivoire</p></div><span class="expo-tag past">Passée</span></div>
+        <div class="expo-item"><div class="expo-year">2020</div><div class="expo-info"><h3>Abidjan Art Fair</h3><p>Abidjan, Côte d'Ivoire</p></div><span class="expo-tag past">Passée</span></div>
+        <div class="expo-item"><div class="expo-year">2019</div><div class="expo-info"><h3>Exposition à l'Hôtel OMONO</h3><p>Abidjan, Côte d'Ivoire</p></div><span class="expo-tag past">Passée</span></div>
+        <div class="expo-item"><div class="expo-year">2019</div><div class="expo-info"><h3>Melting Pot</h3><p>Sofitel Hôtel Ivoire — Abidjan, Côte d'Ivoire</p></div><span class="expo-tag past">Passée</span></div>
+      </div>
     </div>
-    <div class="expo-item">
-      <div class="expo-year">2024</div>
-      <div class="expo-info"><h3>Diorama — Mémoires textiles</h3><p>Centre Culturel Africain — Abidjan, Côte d'Ivoire</p></div>
-      <span class="expo-tag past">Passée</span>
+
+    <!-- 2010s -->
+    <div class="expo-decade" id="decade2010">
+      <button class="expo-decade-btn" onclick="toggleDecade('decade2010')">
+        <span class="expo-decade-label">2010 — 2018</span>
+        <span class="expo-decade-count">16 expositions</span>
+        <span class="expo-decade-arrow">▸</span>
+      </button>
+      <div class="expo-decade-list">
+        <div class="expo-item"><div class="expo-year">2018</div><div class="expo-info"><h3>« Une toile pour sauver l'enfant » 1ère Édition</h3><p>Abidjan, Côte d'Ivoire</p></div><span class="expo-tag past">Passée</span></div>
+        <div class="expo-item"><div class="expo-year">2018</div><div class="expo-info"><h3>Les Grandes Cimaises d'Abidjan</h3><p>Abidjan, Côte d'Ivoire</p></div><span class="expo-tag past">Passée</span></div>
+        <div class="expo-item"><div class="expo-year">2017</div><div class="expo-info"><h3>Exposition personnelle</h3><p>Sofitel Hôtel Ivoire — Abidjan, Côte d'Ivoire</p></div><span class="expo-tag past">Passée</span></div>
+        <div class="expo-item"><div class="expo-year">2017</div><div class="expo-info"><h3>Les Grandes Cimaises d'Abidjan</h3><p>Abidjan, Côte d'Ivoire</p></div><span class="expo-tag past">Passée</span></div>
+        <div class="expo-item"><div class="expo-year">2016</div><div class="expo-info"><h3>Galerie SAFRAN</h3><p>Abidjan, Côte d'Ivoire</p></div><span class="expo-tag past">Passée</span></div>
+        <div class="expo-item"><div class="expo-year">2016</div><div class="expo-info"><h3>Galerie SAF'ART</h3><p>Abidjan, Côte d'Ivoire</p></div><span class="expo-tag past">Passée</span></div>
+        <div class="expo-item"><div class="expo-year">2015</div><div class="expo-info"><h3>Galerie SAF'ART</h3><p>Abidjan, Côte d'Ivoire</p></div><span class="expo-tag past">Passée</span></div>
+        <div class="expo-item"><div class="expo-year">2014</div><div class="expo-info"><h3>Revel'Art Festival 3ème Édition</h3><p>Bingerville — Côte d'Ivoire</p></div><span class="expo-tag past">Passée</span></div>
+        <div class="expo-item"><div class="expo-year">2014</div><div class="expo-info"><h3>SGBCI — Journée de l'Art 2ème Édition</h3><p>Abidjan-Plateau, Côte d'Ivoire</p></div><span class="expo-tag past">Passée</span></div>
+        <div class="expo-item"><div class="expo-year">2014</div><div class="expo-info"><h3>Abidjan Art Festival (AAF)</h3><p>Abidjan, Côte d'Ivoire</p></div><span class="expo-tag past">Passée</span></div>
+        <div class="expo-item"><div class="expo-year">2013</div><div class="expo-info"><h3>Art & Nature 4ème Édition</h3><p>Katadji-Sikensi — Côte d'Ivoire</p></div><span class="expo-tag past">Passée</span></div>
+        <div class="expo-item"><div class="expo-year">2012</div><div class="expo-info"><h3>Palais de la Culture</h3><p>Entrée Culturelle — Abidjan-Treichville</p></div><span class="expo-tag past">Passée</span></div>
+        <div class="expo-item"><div class="expo-year">2011</div><div class="expo-info"><h3>Caravane de la Paix</h3><p>Palais de la Culture — Abidjan, Côte d'Ivoire</p></div><span class="expo-tag past">Passée</span></div>
+        <div class="expo-item"><div class="expo-year">2011</div><div class="expo-info"><h3>Résidence Bertille</h3><p>Abidjan-Cocody, Côte d'Ivoire</p></div><span class="expo-tag past">Passée</span></div>
+        <div class="expo-item"><div class="expo-year">2010</div><div class="expo-info"><h3>2ème Prix — Exposition d'Automne de St Laurent</h3><p>Montréal, Canada</p></div><span class="expo-tag past">Passée</span></div>
+        <div class="expo-item"><div class="expo-year">2010</div><div class="expo-info"><h3>Cinquantenaire de la Côte d'Ivoire</h3><p>District d'Abidjan, Côte d'Ivoire</p></div><span class="expo-tag past">Passée</span></div>
+      </div>
     </div>
-    <div class="expo-item">
-      <div class="expo-year">2023</div>
-      <div class="expo-info"><h3>Regards croisés contemporains</h3><p>Fondation Blachère — Apt, France</p></div>
-      <span class="expo-tag past">Passée</span>
+
+    <!-- 2000s -->
+    <div class="expo-decade" id="decade2000">
+      <button class="expo-decade-btn" onclick="toggleDecade('decade2000')">
+        <span class="expo-decade-label">2000 — 2009</span>
+        <span class="expo-decade-count">16 expositions</span>
+        <span class="expo-decade-arrow">▸</span>
+      </button>
+      <div class="expo-decade-list">
+        <div class="expo-item"><div class="expo-year">2009</div><div class="expo-info"><h3>Art & Nature 2ème Édition</h3><p>Katadji-Sikensi — Côte d'Ivoire</p></div><span class="expo-tag past">Passée</span></div>
+        <div class="expo-item"><div class="expo-year">2009</div><div class="expo-info"><h3>ARKADI</h3><p>Centre Culturel Français — Abidjan, Côte d'Ivoire</p></div><span class="expo-tag past">Passée</span></div>
+        <div class="expo-item"><div class="expo-year">2008</div><div class="expo-info"><h3>Art & Nature 1ère Édition</h3><p>Katadji-Sikensi — Côte d'Ivoire</p></div><span class="expo-tag past">Passée</span></div>
+        <div class="expo-item"><div class="expo-year">2008</div><div class="expo-info"><h3>Banque Mondiale</h3><p>Cocody — Abidjan, Côte d'Ivoire</p></div><span class="expo-tag past">Passée</span></div>
+        <div class="expo-item"><div class="expo-year">2007</div><div class="expo-info"><h3>Galerie le Dompry</h3><p>Abidjan-Plateau, Côte d'Ivoire</p></div><span class="expo-tag past">Passée</span></div>
+        <div class="expo-item"><div class="expo-year">2006</div><div class="expo-info"><h3>Participation au CIAO</h3><p>Ouagadougou, Burkina Faso</p></div><span class="expo-tag past">Passée</span></div>
+        <div class="expo-item"><div class="expo-year">2006</div><div class="expo-info"><h3>Galerie Anis Éditions</h3><p>2 Plateaux — Abidjan, Côte d'Ivoire</p></div><span class="expo-tag past">Passée</span></div>
+        <div class="expo-item"><div class="expo-year">2005</div><div class="expo-info"><h3>Restaurant le Waïmea</h3><p>Biétry — Abidjan, Côte d'Ivoire</p></div><span class="expo-tag past">Passée</span></div>
+        <div class="expo-item"><div class="expo-year">2004</div><div class="expo-info"><h3>Fête des Musées</h3><p>Musées des Civilisations — Abidjan, Côte d'Ivoire</p></div><span class="expo-tag past">Passée</span></div>
+        <div class="expo-item"><div class="expo-year">2003</div><div class="expo-info"><h3>Association Kili-Isère</h3><p>Sassenage, France</p></div><span class="expo-tag past">Passée</span></div>
+        <div class="expo-item"><div class="expo-year">2003</div><div class="expo-info"><h3>Le Lâcher des Peintres</h3><p>Fontanil, France</p></div><span class="expo-tag past">Passée</span></div>
+        <div class="expo-item"><div class="expo-year">2003</div><div class="expo-info"><h3>Hôtel Alpexpo Ulgery</h3><p>Grenoble, France</p></div><span class="expo-tag past">Passée</span></div>
+        <div class="expo-item"><div class="expo-year">2002</div><div class="expo-info"><h3>Galerie Arts Premiers Déco</h3><p>Enghien-les-Bains, France</p></div><span class="expo-tag past">Passée</span></div>
+        <div class="expo-item"><div class="expo-year">2002</div><div class="expo-info"><h3>Foire de Nancy</h3><p>Nancy, France</p></div><span class="expo-tag past">Passée</span></div>
+        <div class="expo-item"><div class="expo-year">2001</div><div class="expo-info"><h3>Art et Bronze</h3><p>Hôtel Sofitel — Abidjan-Plateau, Côte d'Ivoire</p></div><span class="expo-tag past">Passée</span></div>
+        <div class="expo-item"><div class="expo-year">2000</div><div class="expo-info"><h3>Galerie des Arts Attack</h3><p>Maryland, USA</p></div><span class="expo-tag past">Passée</span></div>
+      </div>
     </div>
-    <div class="expo-item">
-      <div class="expo-year">2019</div>
-      <div class="expo-info"><h3>Abidjan Art Fair</h3><p>Sofitel Hôtel Ivoire — Abidjan, Côte d'Ivoire</p></div>
-      <span class="expo-tag past">Passée</span>
+
+    <!-- 1990s -->
+    <div class="expo-decade" id="decade1990">
+      <button class="expo-decade-btn" onclick="toggleDecade('decade1990')">
+        <span class="expo-decade-label">1996 — 1999</span>
+        <span class="expo-decade-count">3 expositions</span>
+        <span class="expo-decade-arrow">▸</span>
+      </button>
+      <div class="expo-decade-list">
+        <div class="expo-item"><div class="expo-year">1999</div><div class="expo-info"><h3>Exposition personnelle</h3><p>Hôtel Communal de Cocody — Abidjan, Côte d'Ivoire</p></div><span class="expo-tag past">Passée</span></div>
+        <div class="expo-item"><div class="expo-year">1998</div><div class="expo-info"><h3>Fête du Pinceau</h3><p>Abidjan, Côte d'Ivoire</p></div><span class="expo-tag past">Passée</span></div>
+        <div class="expo-item"><div class="expo-year">1996</div><div class="expo-info"><h3>Foire Internationale de Berlin</h3><p>Berlin, Allemagne</p></div><span class="expo-tag past">Passée</span></div>
+      </div>
     </div>
   </div>
 
@@ -1429,6 +1523,12 @@
   });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
+  // ===== EXPO DECADE TOGGLE =====
+  function toggleDecade(id) {
+    var el = document.getElementById(id);
+    if (el) el.classList.toggle('open');
+  }
+
   // ===== SMOOTH SCROLL FOR NAV =====
   document.querySelectorAll('nav a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
@@ -1573,10 +1673,10 @@
   var bioColEN = [
     { title: 'Origins & Training',
       paras: [
-        "A native of the <strong>north of Cote d'Ivoire</strong, Fondio Maurhy is a partially self-taught artist. From <em>1991 to 1993</em>, he enrolled in evening classes at the Institut National des Arts (INA), now INSAAC.",
-        'At the same time, he frequented the studios of established painters and benefited from the guidance of mentors such as Tamsir Dia and Youssouf Dekimbirila. He also researched the technical work of Picasso, Van Gogh and Raymon Poulet (a contemporary French painter).',
-        'Later, Maurhy opened up his own path getting away from what he considered a purely academic approach. One of his particularities is the types of supports he uses. They can be classical or imaginative.',
-        'Maurhy has already exhibited in Abidjan, where he lives and works, as well as internationally (<em>Europe</em> and <em>America</em>).'
+        'Originally from <strong>northern Ivory Coast</strong>, Fondio Maurhy is a largely self-taught artist. From <em>1991 to 1993</em>, he attended evening classes at the National Institute of Arts (INA), now INSAAC.',
+        'At the same time, he frequented the studios of established painters and benefited from the mentorship of <strong>Tamsir Dia</strong> and <strong>Youssouf Dekimbirila</strong>. He also deepened his knowledge by studying the technical work of great masters.',
+        'Subsequently, Maurhy developed a <strong>personal artistic approach</strong>, moving away from what he considers a purely academic process. One of his distinctive features lies in the variety of support forms he uses, ranging from classic formats to more original creations.',
+        'Maurhy has exhibited his works in <strong>Abidjan</strong>, where he lives and works, as well as abroad \u2014 in <em>Europe</em> and <em>America</em>.'
       ],
       highlights: []
     },
@@ -1586,9 +1686,8 @@
         "The artist oscillates between <strong>symbolism</strong>, <strong>figurative art</strong>, and <strong>decoration</strong>. His works are a call to build a harmonious world where individuals and peoples accept each other despite their differences in race and culture."
       ],
       highlights: [
-        "Mixed relief is the trademark of Fondio Maurhy's artistic approach, which is characterized by a kind of fusion between 2D and 3D, half painting, half sculpture, all set against a background of collage of various materials (papier-mâché, cardboard, etc.). The choice of colors is also a mixture of natural pigments, coffee granules, acrylics and oils. ",
-        "The artist vacillates between symbolism, figurative painting and deco. We therefore understand that Maurhy's work is a call to build a harmonious world where individuals, and more broadly different peoples, accept each other despite their racial and cultural differences.",
-        'Mixed-relief is therefore, literally and figuratively, a way of expressing the mixed nature of human relations, made up of differences, interaction, tolerance and acceptance.'
+        "Mixed relief is the signature of Fondio Maurhy\u2019s artistic approach \u2014 a fusion between 2D and 3D, between painting and sculpture.",
+        'Mixed relief is, literally and figuratively, a way of expressing the diversity of human relationships \u2014 made of divergences, interactions, tolerance, and acceptance.'
       ]
     }
   ];
